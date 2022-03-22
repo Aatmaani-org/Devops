@@ -28,7 +28,7 @@ pipeline {
   }
   post {
     failure {
-        slackSend "Build"
+        slackSend "Build-dev"
       }
   }
 }
