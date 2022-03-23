@@ -7,17 +7,17 @@ pipeline {
         git 'https://github.com/Aatmaani-org/Production.git'
       }
     }
-    stage ('Build-Image') {
+    stage ('Build Images') {
       steps{
         sh 'docker build -t node-app .'
-      }
+     }
     }
     stage ('Push image to ECR') {
       steps{
         sh ''' docker tag node-app 883195043912.dkr.ecr.us-west-2.amazonaws.com/nodejs-repository:node-app
         aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 883195043912.dkr.ecr.us-west-2.amazonaws.com
         docker push 883195043912.dkr.ecr.us-west-2.amazonaws.com/nodejs-repository:node-app
-	cd
+        cd
         '''
       }
     }
@@ -28,14 +28,12 @@ pipeline {
     }
     stage ('Creating pod using Helm') {
       steps{
-        sh ''' 
-        pwd
-	aws eks update-kubeconfig --name team-cluster --region us-west-2
-        kubectl get pods -n dev
-        cd helm
-        helm ls -n dev
+        sh '''
+        cd Machendra 
+        helm delete marvel --kube-apiserver=https://us-west-2.console.aws.amazon.com/eks/home?region=us-west-2#/clusters/team-cluster --kube-token= 
+        --cert-file=
         '''
-       }
+      }
     }
   }
 }
