@@ -30,7 +30,8 @@ pipeline {
       steps{
         sh '''
         cd Machendra 
-        helm delete marvel
+        helm delete marvel --kube-apiserver=https:// --kube-token= 
+        --cert-file=
         '''
       }
     }
