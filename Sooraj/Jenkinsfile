@@ -16,9 +16,14 @@ pipeline {
           '''
         }
       }
-      stage('Clone') {
+      stage('Clone Devops') {
          steps {
            git branch: 'main', url: 'https://github.com/Aatmaani-org/Devops.git'
+         }
+      }
+      stage('Helm') {
+         steps {
+           sh 'ls'
          }
       }
     }
