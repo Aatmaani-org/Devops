@@ -2,12 +2,12 @@ pipeline {
     agent any
 
     stages {
-      stage('Clone') {
+      stage('Clone Production') {
         steps {
           git branch: 'main', url: 'https://github.com/Aatmaani-org/Production.git'
         }
       }
-      stage('Test') {
+      stage('Build and push the image to ECR') {
         steps {
           sh '''
 	  docker build -t new-nodejs .
