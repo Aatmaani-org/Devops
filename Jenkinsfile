@@ -28,9 +28,9 @@ pipeline {
     }
     stage ('Creating pod using Helm') {
       steps{
-       sh 'cd helm' 
-       sh 'ls'
-       sh 'helm install node-dev nodejs-project -n dev -f values-dev.yaml'
+        sh 'cd helm' 
+        sh 'ls'
+        sh 'helm install node-dev nodejs-project -n dev -f values-dev.yaml'
        }
     }
   }
