@@ -22,13 +22,8 @@ pipeline {
     }
     stage ('Creating pod using Helm') {
       steps{
-        sh 'helm upgrade --install node-dev node-app -n dev'
+        sh 'helm install node-dev nodejs-project -n dev -f values-dev.yaml'
        }
     }
-  }
-  post {
-    failure {
-        slackSend "Build_failure"
-      }
   }
 }
