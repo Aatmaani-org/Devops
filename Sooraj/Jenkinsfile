@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Aatmaani-org/Production.git'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh '''
+		docker build -t new-nodejs .
+                docker tag new-nodejs:latest 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:latest
+                docker push 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:latest 
+                '''
+            }
+        }
+        stage('Clone') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Aatmaani-org/Devops.git'
+            }
+        }
+    }
+}
