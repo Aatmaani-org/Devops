@@ -4,7 +4,7 @@ pipeline {
   stages {
     stage ('Git clone') {
       steps{
-        git 'https://github.com/Aatmaani-org/Production.git'
+        git branch: 'main', url:'https://github.com/Aatmaani-org/Production.git'
       }
     }
     stage ('Build Images') {
@@ -30,8 +30,7 @@ pipeline {
       steps{
         sh '''
         cd Machendra 
-        helm delete marvel --kube-apiserver=https://us-west-2.console.aws.amazon.com/eks/home?region=us-west-2#/clusters/team-cluster --kube-token= 
-        --cert-file=
+        helm delete marvel
         '''
       }
     }

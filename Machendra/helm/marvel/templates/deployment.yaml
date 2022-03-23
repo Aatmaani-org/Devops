@@ -38,15 +38,15 @@ spec:
               containerPort: {{ .Values.service.containerPort }}
               protocol: TCP
 
-            livenessProbe:
-              tcpSocket:
-                port: {{ .Values.service.port }}
-            readinessProbe:
-               tcpSocket:
-                  port: {{ .Values.service.port }}
-               initialDelaySeconds: {{ .Values.service.initialDelaySeconds }}
-               periodSeconds: {{ .Values.service.periodSeconds }}
-      resources:
+          livenessProbe:
+            tcpSocket:
+              port: {{ .Values.service.port }}
+          readinessProbe:
+            tcpSocket:
+              port: {{ .Values.service.port }}
+            initialDelaySeconds: {{ .Values.service.initialDelaySeconds }}
+            periodSeconds: {{ .Values.service.periodSeconds }}
+          resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
