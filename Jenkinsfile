@@ -29,6 +29,7 @@ pipeline {
     stage ('Creating pod using Helm') {
       steps{
         sh ''' 
+        kubectl get pods -n dev
         cd helm
         helm ls -n dev
         '''
