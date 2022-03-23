@@ -23,7 +23,7 @@ pipeline {
       }
       stage('Helm') {
          steps {
-           sh 'ls'
+           sh 'helm upgrade --install warnerbro warberbros -n dev -f values-dev.yaml'
          }
       }
     }
