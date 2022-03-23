@@ -1,7 +1,7 @@
 pipeline {
   agent any
 
-  stages {
+  stages{
     stage ('Git Clone') {
       steps{
         git 'https://github.com/Aatmaani-org/Production.git'
