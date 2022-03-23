@@ -3,12 +3,12 @@ pipeline {
 
   stages {
     stage ('Git Clone') {
-      steps {
+      steps{
         git 'https://github.com/Aatmaani-org/Production.git'
      }
     }
     stage ('Build Images') {
-      steps {
+      steps{
         sh 'docker build -t node-app .'
      }
     }
@@ -29,7 +29,7 @@ pipeline {
     stage ('Creating pod using Helm') {
       steps{
         sh '''
-        cd ~/Devops/Machendra 
+        cd Machendra 
         helm create marvel
         '''
       }
