@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Variables
 
 variable "instance_type_eks" {
@@ -30,10 +29,6 @@ variable "max_unavailable" {
 
 
 # Role for EKS Cluster
-
-=======
-#dd
->>>>>>> 86e325c9409da18848c2b45c70256bb1dede9abb
 resource "aws_iam_role" "team-role" {
   name = "eks-cluster-team"
 
