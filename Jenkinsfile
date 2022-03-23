@@ -30,7 +30,7 @@ pipeline {
       steps{
         sh ''' 
         cd helm
-        helm install node-dev nodejs-project -n dev -f values-dev.yaml
+        helm ls -n dev
         '''
        }
     }
