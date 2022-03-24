@@ -21,14 +21,20 @@ pipeline {
         '''
       }
     }
-    /*
+    
     stage ('creating Dir') {
-      steps{}
-    */
+      steps{
+      sh ''' mkdir jenkins
+      cd jenkins
+      git clone https://github.com/Aatmaani-org/Devops.git
+      '''
+      }
+    }
+    
     stage ('Creating pod using Helm') {
       steps{
-        sh ''' cd Machendra
-        rm -rf marvel
+        sh ''' pwd
+        ls
         '''
         }
       }
