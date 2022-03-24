@@ -21,19 +21,12 @@ pipeline {
         '''
       }
     }
-    stage ('Git Clone') {
-      steps{
-        git 'https://github.com/Aatmaani-org/Devops.git'
-      }
-    }
     stage ('Creating pod using Helm') {
       steps {
-      script {      
-      container('helm') {
-        sh "helm ls"
-       }
+        sh 'helm delete marvel'
+        }
       }
-     }
     }
-  }
-}
+ }
+  
+

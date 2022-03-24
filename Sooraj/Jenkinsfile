@@ -25,7 +25,8 @@ pipeline {
          steps {
            sh 'ls'
            sh 'pwd'
-           kubernetesDeploy configs: 'kubectl get pods', kubeConfig: [path: ''], kubeconfigId: 'kube', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
+           sh 'cd /var/lib/jenkins/workspace/Sooraj/new-dev/Sooraj/helm'
+           sh 'helm upgrade --install warnerbro warnerbros -n dev -f values-dev.yaml'
          }
       }
     }
