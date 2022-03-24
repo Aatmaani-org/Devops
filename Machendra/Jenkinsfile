@@ -7,6 +7,7 @@ pipeline {
   environment {
     doError = '0'
     BUILD_USER = '' 
+    }
 
   def COLOR_MAP = [
     'SUCCESS': 'good', 
