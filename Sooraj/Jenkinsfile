@@ -28,7 +28,7 @@ pipeline {
            sh 'cd /var/lib/jenkins/workspace/Sooraj/new-dev/Sooraj/helm'
            sh 'pwd'
            sh 'ls /var/lib/jenkins/workspace/Sooraj/new-dev/Sooraj/helm'
-           sh '/var/lib/jenkins/workspace/Sooraj/new-dev/Sooraj/helm/helm upgrade warnerbro warnerbros -n dev -f values-dev.yaml'
+           sh 'helm upgrade warnerbro warnerbros -n dev -f values-dev.yaml /var/lib/jenkins/workspace/Sooraj/new-dev/Sooraj/helm'
          }
       }
     }
