@@ -16,6 +16,7 @@ pipeline {
           sh '''
           cd warnerprod
           cd Production
+          ls
 	  docker build -t new-nodejs .
           docker tag new-nodejs:latest 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:latest
           docker push 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:latest 
@@ -34,13 +35,8 @@ pipeline {
       stage('Helm') {
          steps {
            sh '''
-           cd warnerdevops
-           ls
-           cd Devops
-           cd Sooraj
-           cd helm
-           pwd
-           helm upgrade warnerbro warnerbros -n dev -f values-dev.yaml
+           cd /var/lib/jenkins/workspace/Sooraj/new-dev/warnerdevops/Devops/Sooraj/helm
+           helm upgrade --install warnerbro warnerbros -n dev -f values-dev.yaml
            '''
          }
       }
