@@ -15,7 +15,8 @@ pipeline{
 	}
         stage('helm run'){
 	    steps{
-	        sh ''' cd ../../Devops/Sharan 
+	        sh '''pwd
+		cd ../../Devops/Sharan 
 	        helm upgrade --install sharan-prod nodejs -n sharan-prod -f values-prod.yaml'''
 	     }
         }
