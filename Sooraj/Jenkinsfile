@@ -5,7 +5,7 @@ pipeline {
       stage('Clone Production') {
         steps {
           sh '''
-          mkdir warnerprod
+          #mkdir warnerprod 
           cd warnerprod
           git clone https://github.com/Aatmaani-org/Production.git
         '''
@@ -15,6 +15,7 @@ pipeline {
         steps {
           sh '''
           cd warnerprod
+          cd Production
 	  docker build -t new-nodejs .
           docker tag new-nodejs:latest 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:latest
           docker push 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:latest 
