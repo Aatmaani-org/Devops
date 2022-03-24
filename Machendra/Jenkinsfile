@@ -47,7 +47,7 @@ pipeline {
         }
       
       success {
-        slackSend channel: "project-team", color: '#AA1100', message: "Build Status: Success ${env.JOB_NAME} ${env.BUILD_NUMBER} ${env.BUILD_URL}"
+        slackSend channel: "project-team", color: 'good', message: "Build Status: Success ${env.JOB_NAME} ${env.BUILD_NUMBER} ${env.BUILD_URL}"
         }
       
       
