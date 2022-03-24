@@ -28,8 +28,8 @@ pipeline {
     stage ('Creating pod using Helm') {
       steps{
         sh ''' cd Machendra
-        ls
-        helm install node marvel -n dev -f values-dev.yaml'''
+        helm delete marvel
+        '''
         }
       }
     }
