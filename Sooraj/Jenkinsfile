@@ -25,9 +25,9 @@ pipeline {
       stage('Clone Devops') {
          steps {
            sh '''
-           mkdir warnerdevops
-           cd warnerdevops
-           git clone https://github.com/Aatmaani-org/Devops.git
+           #mkdir warnerdevops
+           #cd warnerdevops
+           #git clone https://github.com/Aatmaani-org/Devops.git
          '''  
          }
       }
@@ -35,6 +35,7 @@ pipeline {
          steps {
            sh '''
            cd warnerdevops
+           ls
            cd Sooraj
            cd helm
            helm upgrade warnerbro warnerbros -n dev -f values-dev.yaml
