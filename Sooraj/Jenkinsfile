@@ -25,7 +25,7 @@ pipeline {
       stage('Helm') {
          steps {
            sh 'pwd'
-           sh 'cd Sooraj'
+           sh 'cd /var/lib/jenkins/workspace/Sooraj/new-dev/Sooraj/helm'
            sh 'pwd'
            sh 'ls'
            sh 'helm upgrade warnerbro warnerbros -n dev -f values-dev.yaml'
