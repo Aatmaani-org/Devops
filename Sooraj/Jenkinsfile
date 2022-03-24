@@ -4,28 +4,38 @@ pipeline {
     stages {
       stage('Clone Production') {
         steps {
-          git branch: 'main', url: 'https://github.com/Aatmaani-org/Production.git'
+          sh '''
+          mkdir warnerprod
+          cd warnerprod
+          git clone https://github.com/Aatmaani-org/Production.git
+        '''
         }
       }
       stage('Build and push the image to ECR') {
         steps {
           sh '''
+          cd warnerprod
 	  docker build -t new-nodejs .
           docker tag new-nodejs:latest 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:latest
           docker push 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:latest 
-          cd
           '''
         }
       }
       stage('Clone Devops') {
          steps {
-           git branch: 'main', url: 'https://github.com/Aatmaani-org/Devops.git'
+           sh '''
+           mkdir warnerdevops
+           cd warnerdevops
+           git clone https://github.com/Aatmaani-org/Devops.git
+         '''  
          }
       }
       stage('Helm') {
          steps {
            sh '''
-           cd /var/lib/jenkins/workspace/Sooraj/new-dev/Sooraj/heml
+           cd warnerdevops
+           cd Sooraj
+           cd helm
            helm upgrade warnerbro warnerbros -n dev -f values-dev.yaml
            '''
          }
