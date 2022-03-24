@@ -1,9 +1,11 @@
-def COLOR_MAP = {...}
-def getBuildUser(){...}
-
+#def COLOR_MAP = {...}
+#def getBuildUser(){...}
 
 pipeline {
   agent any
+
+  def COLOR_MAP = [...]
+  def getBuildUser(){...}
 
   stages {
     stage ('Git clone') {
