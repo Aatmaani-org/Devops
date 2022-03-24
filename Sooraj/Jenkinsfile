@@ -16,8 +16,8 @@ pipeline {
           sh '''
           cd /var/lib/jenkins/workspace/Sooraj/new-dev/warnerprod/Production
 	  docker build -t new-nodejs .
-          docker tag new-nodejs:latest 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:latest
-          docker push 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:latest 
+          docker tag new-nodejs:latest 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:$(git log -1 --format=%h)
+          docker push 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:$(git log -1 --format=%h)
           '''
         }
       }
