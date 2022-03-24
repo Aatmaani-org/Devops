@@ -42,14 +42,14 @@ pipeline {
     }
     
     post {
-      always {
+      failure {
         slackSend channel: "project-team", color: 'AA1100', message: "Build Status: ${currentBuild.currentBuild} ${env.JOB_NAME} ${env.BUILD_NUMBER} ${env.BUILD_URL}"
         }
-      /*
+      
       success {
         slackSend channel: "project-team", color: 'good', message: "Build Status: ${currentBuild.currentBuild} ${env.JOB_NAME} ${env.BUILD_NUMBER} ${env.BUILD_URL}"
         }
-      */
+      
       
     }
   }
