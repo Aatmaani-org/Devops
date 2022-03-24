@@ -35,23 +35,21 @@ pipeline {
       steps{
         sh ''' cd jenkins
         cd Devops/Machendra/helm/
-        helm upgrade --install node-dev marvel -n dev -f values-dev.yaml
+        helm upgrade --install node-dev marvel -n dev -f values-dev.yamla
         '''
         }
       }
     }
     
     post {
-      always {
-        script {
-        slackSend channel: "project-team", color: 'danger', message: "Build Status: ${currentBuild.currentBuild} ${env.JOB_NAME} ${env.BUILD_NUMBER} ${env.BUILD_URL}"
+      failure {
+        slackSend channel: "project-team", color: 'AA1100', message: "Build Status: ${currentBuild.currentBuild} ${env.JOB_NAME} ${env.BUILD_NUMBER} ${env.BUILD_URL}"
         }
-      }
-      /*
+      
       success {
         slackSend channel: "project-team", color: 'good', message: "Build Status: ${currentBuild.currentBuild} ${env.JOB_NAME} ${env.BUILD_NUMBER} ${env.BUILD_URL}"
         }
-      */
+      
       
     }
   }
