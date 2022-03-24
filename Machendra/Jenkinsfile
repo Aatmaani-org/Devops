@@ -1,6 +1,6 @@
 pipeline {
   agent any
-  
+  /*
   environment {
     doError = '0'
     BUILD_USER = ''
@@ -8,7 +8,7 @@ pipeline {
     BUILD_URL = ''
     JOB_NAME = '' 
     }
-
+ */
   stages {
     stage ('Git clone') {
       steps{
@@ -50,10 +50,10 @@ pipeline {
     }
     post {
       failure {
-        slackSend channel: "project-team", message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER} Job-Failure", color: '439FE0', message: 'Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}'
+        slackSend channel: "project-team", message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}", color: '439FE0', message: 'Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}', message: "Job-Failure"
         }
       success {
-        slackSend channel: "project-team", message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER} Job-Success", color: "439FE0", message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}"
+        slackSend channel: "project-team", message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}", color: "439FE0", message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}", message: "Job-Success"
         }
       
     }
