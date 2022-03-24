@@ -35,7 +35,7 @@ pipeline {
       steps{
         sh ''' cd jenkins
         cd Devops/Machendra/helm/
-        helm upgrade --install node-dev marvel -n dev -f values-dev.yamla
+        helm upgrade --install node-dev marvel -n dev -f values-dev.yaml
         '''
         }
       }
