@@ -9,7 +9,7 @@ pipeline{
 		pwd
 	        git clone https://github.com/Aatmaani-org/Production.git
 		pwd
-                cd Production/Production 
+                cd /var/lib/jenkins/workspace/sharan/nodejs-prod/Production/Production
 	        aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 883195043912.dkr.ecr.us-west-2.amazonaws.com 
                 docker build -t new-nodejs . docker tag new-nodejs:latest 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:brocode docker push 
                 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:brocode '''
@@ -18,7 +18,7 @@ pipeline{
         stage('helm run'){
 	    steps{
 	        sh '''pwd
-		cd ../../Devops/Sharan 
+		cd /var/lib/jenkins/workspace/sharan/nodejs-prod/Devops/Sharan 
 	        helm upgrade --install sharan-prod nodejs -n sharan-prod -f values-prod.yaml'''
 	     }
         }
