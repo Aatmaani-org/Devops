@@ -6,22 +6,23 @@ pipeline {
         steps {
           sh '''
           #mkdir warnerprod 
-          cd warnerprod
-          git clone https://github.com/Aatmaani-org/Production.git
+          #cd warnerprod
+          #git clone https://github.com/Aatmaani-org/Production.git
         '''
         }
       }
       stage('Build and push the image to ECR') {
         steps {
           sh '''
-          cd warnerprod
-          cd Production
+          cd /var/lib/jenkins/workspace/Sooraj/new-dev/warnerprod/Production
 	  docker build -t new-nodejs .
-          docker tag new-nodejs:latest 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:latest
-          docker push 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:latest 
+          cd /var/lib/jenkins/workspace/Sooraj/new-dev/Sooraj
+          docker tag new-nodejs:latest 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:$(git log -1 --format=%H)
+          docker push 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:$(git log -1 --format=%H)
           '''
         }
       }
+       /*
       stage('Clone Devops') {
          steps {
            sh '''
@@ -31,15 +32,22 @@ pipeline {
          '''  
          }
       }
+        */
       stage('Helm') {
          steps {
            sh '''
-           cd warnerdevops
-           cd Sooraj
-           cd helm
-           helm upgrade warnerbro warnerbros -n dev -f values-dev.yaml
+           cd /var/lib/jenkins/workspace/Sooraj/new-dev/Sooraj/helm
+           helm upgrade --install warnerbro warnerbros -n dev -f values-dev.yaml
            '''
          }
+      }
+    }
+    post {
+      failure {
+        slackSend channel: ' project-team', message: 'job failed'
+      }
+      success {
+        slackSend channel: ' project-team', message: 'job Success'
       }
     }
 }
