@@ -13,9 +13,10 @@ pipeline {
     'SUCCESS': 'good', 
     'FAILURE': 'danger',
   ]
-  /*
+  
   def getBuildUser() {
-    return currentBuild.rawBuild.getCause(Cause.UserIdCause).getUserId()
+      return 
+      currentBuild.rawBuild.getCause(Cause.UserIdCause).getUserId()
   }
   
   post {
@@ -25,7 +26,7 @@ pipeline {
       }
     }
   }
-  */
+  
   stages {
     stage ('Git clone') {
       steps{
