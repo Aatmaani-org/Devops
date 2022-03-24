@@ -25,7 +25,11 @@ pipeline{
 
     post { 
       success{
-        slackSend channel: 'project-team', message: 'fail'
+        slackSend channel: 'project-team', message: 'success'
       }
+   }
+    post {
+      failure{
+        slackSend channel: 'project-team', message: 'job-failed'                                                                                                                                                            }
    }
 }
