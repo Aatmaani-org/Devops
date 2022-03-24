@@ -8,7 +8,7 @@ pipeline{
             }
         }
 */
-        stages ('mkdir & clone prod) {
+        stages ('mkdir & clone prod') {
 	     steps{
 		 sh '''  mkdir Production 
 		 cd Production
