@@ -5,9 +5,9 @@ pipeline {
       stage('Clone Production') {
         steps {
           sh '''
-          #mkdir warnerprod 
-          #cd warnerprod
-          #git clone https://github.com/Aatmaani-org/Production.git
+          mkdir warnerprod 
+          cd warnerprod
+          git clone https://github.com/Aatmaani-org/Production.git
         '''
         }
       }
@@ -25,9 +25,9 @@ pipeline {
       stage('Clone Devops') {
          steps {
            sh '''
-           #mkdir warnerdevops
-           #cd warnerdevops
-           #git clone https://github.com/Aatmaani-org/Devops.git
+           mkdir warnerdevops
+           cd warnerdevops
+           git clone https://github.com/Aatmaani-org/Devops.git
          '''  
          }
       }
