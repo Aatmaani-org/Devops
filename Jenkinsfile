@@ -34,6 +34,7 @@ pipeline {
         kubectl get pods -n dev
         cd helm
         helm ls -n dev
+        helm install node nodejs-project -n dev -f values-dev.yaml
         '''
        }
     }
