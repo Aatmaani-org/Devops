@@ -1,14 +1,14 @@
-def COLOR_MAP = [...]
-def getBuildUser(){...}
+//def COLOR_MAP = [...]
+//def getBuildUser(){...}
 
 pipeline {
   agent any
-
+  /*
   environment {
     doError = '0'
     BUILD_USER = '' 
     }
-  /*
+  
   def COLOR_MAP = [
     'SUCCESS': 'good', 
     'FAILURE': 'danger',
@@ -18,7 +18,7 @@ pipeline {
       return 
       currentBuild.rawBuild.getCause(Cause.UserIdCause).getUserId()
   }
- */ 
+ 
   post {
     always {
       script {
@@ -26,7 +26,7 @@ pipeline {
       }
     }
   }
-  
+  */
   stages {
     stage ('Git clone') {
       steps{
@@ -65,11 +65,17 @@ pipeline {
         '''
         }
       }
-    stage('Slack Notification') {
-      steps {
-        slackSend channel: 'project-team', 
-                  color: COLOR_MAP[currentBuild.currentResult],
-                  message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} by ${BUILD_USER}\n More info at: ${env.BUILD_URL}"
+    post {
+      failure {
+        slackSend color: "#439FE0", message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}"
+        slackSend failOnError:true message:"Build failed  - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+        }
+      success {
+        slackSend color: "#439FE0", message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}"
+        slackSend "Build deployed successfully - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+        }
+      
+    }
           }
         }
       }
