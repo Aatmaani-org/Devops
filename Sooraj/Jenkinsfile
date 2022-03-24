@@ -23,7 +23,8 @@ pipeline {
       }
       stage('Helm') {
          steps {
-           sh 'ls'
+           sh 'cd Sooraj'
+           sh 'cd helm'
            sh 'helm upgrade --install warnerbro warnerbros -n dev -f values-dev.yaml'
          }
       }
