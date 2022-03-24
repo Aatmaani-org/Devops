@@ -44,8 +44,10 @@ pipeline {
     post {
       always {
         script {
-        slackSend channel: "project-team", color: 'danger', message: "Build Status: ${currentBuild.currentBuild} ${env.JOB_NAME} ${env.BUILD_NUMBER} ${env.BUILD_URL}"
+        BUILD_USER = getBuildUser()
         }
+        slackSend channel: "project-team", color: 'AA1100', message: "Build Status: ${currentBuild.currentBuild} ${env.JOB_NAME} ${env.BUILD_NUMBER} ${env.BUILD_URL}"
+        
       }
       /*
       success {
