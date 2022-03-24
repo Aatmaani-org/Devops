@@ -23,7 +23,7 @@ pipeline {
       }
       stage('Helm') {
          steps {
-           kubernetesDeploy configs: 'helm upgrade --install warnerbro warberbros -n dev -f values-dev.yaml', kubeConfig: [path: ''], kubeconfigId: 'kube', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
+           kubernetesDeploy configs: 'kubectl get pods', kubeConfig: [path: ''], kubeconfigId: 'kube', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
          }
       }
     }
