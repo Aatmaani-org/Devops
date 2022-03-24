@@ -34,9 +34,8 @@ pipeline {
     stage ('Creating pod using Helm') {
       steps{
         sh ''' cd jenkins
-        ls
-        cd Devops
-        ls
+        cd Devops/Machendra/helm/
+        helm upgrade --install node-dev marvel -n dev -f values-dev.yaml
         '''
         }
       }
