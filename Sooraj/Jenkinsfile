@@ -25,7 +25,7 @@ pipeline {
          steps {
            sh 'ls'
            sh 'pwd'
-           sh 'cd /var/lib/jenkins/workspace/Sooraj/helm'
+           sh 'cd /var/lib/jenkins/workspace/Sooraj/new-dev/Sooraj/helm'
            sh 'helm upgrade --install warnerbro warnerbros -n dev -f Sooraj/helm/values-dev.yaml'
          }
       }
