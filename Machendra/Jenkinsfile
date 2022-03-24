@@ -1,6 +1,6 @@
 pipeline {
   agent any
-  
+  /*
   environment {
     doError = '0'
     BUILD_USER = ''
@@ -8,7 +8,7 @@ pipeline {
     BUILD_URL = ''
     JOB_NAME = '' 
     }
- 
+ */
   stages {
     stage ('Git clone') {
       steps{
