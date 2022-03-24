@@ -3,12 +3,15 @@
 
 pipeline {
   agent any
-  /*
+  
   environment {
     doError = '0'
-    BUILD_USER = '' 
+    BUILD_USER = ''
+    BUILD_NUMBER = ''
+    BUILD_URL = ''
+    JOB_NAME = '' 
     }
-  
+  /*
   def COLOR_MAP = [
     'SUCCESS': 'good', 
     'FAILURE': 'danger',
