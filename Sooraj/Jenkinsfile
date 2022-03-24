@@ -13,6 +13,7 @@ pipeline {
 	  docker build -t new-nodejs .
           docker tag new-nodejs:latest 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:latest
           docker push 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:latest 
+          cd
           '''
         }
       }
@@ -25,9 +26,6 @@ pipeline {
          steps {
            sh 'cd Sooraj'
            sh 'ls'
-           sh 'cd helm'
-           sh 'ls'
-           sh 'cd helm'
            sh 'helm upgrade warnerbro warnerbros -n dev -f values-dev.yaml'
          }
       }
