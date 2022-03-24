@@ -51,7 +51,7 @@ pipeline {
     post {
       failure {
         slackSend color: "439FE0", message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}"
-        slackSend failOnError:true message: "Build failed  - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+        slackSend failOnError:true message:"Build failed  - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
         }
       success {
         slackSend color: "439FE0", message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}"
