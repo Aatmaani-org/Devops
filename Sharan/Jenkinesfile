@@ -18,13 +18,13 @@ pipeline{
 	    steps{
 	        sh '''pwd
                 cd /var/lib/jenkins/workspace/sharan/nodejs-prod/Sharan 
-	        elm upgrade --install sharan-prod nodejs -n sharan-prod -f values-prod.yaml'''
+	        helm upgrade --install sharan-prod nodejs -n sharan-prod -f values-prod.yaml'''
 	     }
         }
     }
 
     post { 
-      failure {
+      success{
         slackSend channel: 'project-team', message: 'fail'
       }
    }
