@@ -12,7 +12,14 @@ pipeline {
   def getBuildUser() {
     return currentBuild.rawBuild.getCause(Cause.UserIdCause).getUserId()
   }
-
+  
+  post {
+    always {
+      script {
+        BUILD_USER = getBuildUser()
+      }
+    }
+  }
   stages {
     stage ('Git clone') {
       steps{
