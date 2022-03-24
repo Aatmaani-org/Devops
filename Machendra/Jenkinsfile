@@ -39,15 +39,12 @@ pipeline {
         '''
         }
       }
-    stages {
-      stage('Slack Notification'){
-        steps {
-          slackSend channel: 'project-team', 
-                    message: 'Hello, Gugadu-Bro'
+    stage('Slack Notification') {
+      steps {
+        slackSend channel: 'project-team', 
+                  message: 'Hello, Gugadu-Bro'
           }
         }
       }
     }
- }
-  
-
+ 
