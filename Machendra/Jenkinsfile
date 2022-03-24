@@ -50,14 +50,10 @@ pipeline {
     }
     post {
       failure {
-        slackSend channel: "project-team", message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}"
-        slackSend color: '439FE0', message: 'Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}'
-        //slackSend failOnError:true message:"Build failed  - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+        slackSend channel: "project-team", message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER} Job-Failure", color: '439FE0', message: 'Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}'
         }
       success {
-        slackSend channel: "project-team", message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}"
-        slackSend color: "439FE0", message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}"
-        //slackSend "Build deployed successfully - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Oipen>)"
+        slackSend channel: "project-team", message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER} Job-Success", color: "439FE0", message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}"
         }
       
     }
