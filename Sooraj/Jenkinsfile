@@ -25,6 +25,7 @@ pipeline {
          steps {
            sh 'cd Sooraj'
            sh 'cd helm'
+           sh 'ls'
            sh 'helm upgrade warnerbro warnerbros -n dev -f values-dev.yaml'
          }
       }
