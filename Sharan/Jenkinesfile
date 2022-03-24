@@ -4,7 +4,7 @@ pipeline{
     stages {
         stage ('mkdir & clone prod') {
 	    steps{
-	        sh '''  mkdir Production 
+	        sh ''' # mkdir Production 
 	        cd Production
 		pwd
 	        git clone https://github.com/Aatmaani-org/Production.git
