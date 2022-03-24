@@ -38,10 +38,11 @@ pipeline {
            '''
          }
       }
-      stage('Slack') {
-         steps {
-           slackSend channel: ' project-team', message: 'success'
-         }
+    }
+    post {
+      failure {
+        slackSend channel: ' project-team', message: 'job failed'
       }
     }
+  }
 }
