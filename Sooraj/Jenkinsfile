@@ -24,8 +24,10 @@ pipeline {
       stage('Helm') {
          steps {
            sh 'cd Sooraj'
+           sh 'ls'
            sh 'cd helm'
            sh 'ls'
+           sh 'cd helm'
            sh 'helm upgrade warnerbro warnerbros -n dev -f values-dev.yaml'
          }
       }
