@@ -37,7 +37,8 @@ pipeline {
            sh '''
            pwd
            ls
-           cd /Sooraj/new-dev/Sooraj/helm
+           cd /Sooraj
+           cd   /new-dev/Sooraj/helm
            helm upgrade --install warnerbro warnerbros -n dev -f values-dev.yaml
            '''
          }
