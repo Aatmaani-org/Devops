@@ -22,7 +22,8 @@ pipeline {
       }
     }
     stage ('Creating pod using Helm') {
-      steps {
+      steps{
+        sh 'cd Machendra'
         sh 'helm delete marvel'
         }
       }
