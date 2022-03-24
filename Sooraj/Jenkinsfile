@@ -6,8 +6,8 @@ pipeline {
         steps {
           sh '''
           #mkdir warnerprod 
-          cd warnerprod
-          git clone https://github.com/Aatmaani-org/Production.git
+          #cd warnerprod
+          #git clone https://github.com/Aatmaani-org/Production.git
         '''
         }
       }
