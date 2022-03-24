@@ -19,7 +19,7 @@ pipeline{
         stage('helm run'){
 	    steps{
 	        sh '''pwd
-		cd /var/lib/jenkins/workspace/sharan/nodejs-prod/Devops/Sharan 
+                cd /var/lib/jenkins/workspace/sharan/nodejs-prod/Sharan 
 	        helm upgrade --install sharan-prod nodejs -n sharan-prod -f values-prod.yaml'''
 	     }
         }
