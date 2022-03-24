@@ -1,15 +1,17 @@
 pipeline{
     agent any
     stages {
-        stage('git clone prod') {
-            steps{
+/*        stage('git clone prod') {
+           steps{
 		sh ''' sudo rm -rf *
 		git clone https://github.com/Aatmaani-org/Devops.git'''
             }
         }
-        stages ('mkdir & clone prod) {
+*/
+        stages ('mkdir & clone prod') {
 	     steps{
 		 sh '''  mkdir Production 
+		 cd Production
 		 git clone https://github.com/Aatmaani-org/Production.git
 		 cd Production/Production 
 		 aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 883195043912.dkr.ecr.us-west-2.amazonaws.com 
@@ -20,7 +22,7 @@ pipeline{
         stages('helm run'){
 	     steps{
 		 sh ''' cd ../../Devops/Sharan 
-		 helm upgrade --install sharan-prod nodejs -n sharan-prod -f values-prod.yaml
+		 helm upgrade --install sharan-prod nodejs -n sharan-prod -f values-prod.yaml'''
 	     }
         }
     }
