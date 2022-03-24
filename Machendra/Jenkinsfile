@@ -21,9 +21,15 @@ pipeline {
         '''
       }
     }
+    /*
+    stage ('creating Dir') {
+      steps{}
+    */
     stage ('Creating pod using Helm') {
-      steps {
-        sh 'helm delete marvel'
+      steps{
+        sh ''' cd Machendra
+        ls
+        helm install node marvel -n dev -f values-dev.yaml'''
         }
       }
     }
