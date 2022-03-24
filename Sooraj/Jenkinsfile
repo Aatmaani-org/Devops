@@ -38,5 +38,10 @@ pipeline {
            '''
          }
       }
+      stage('Helm') {
+         steps {
+           slackSend channel: ' project-team', message: 'success'
+         }
+      }
     }
 }
