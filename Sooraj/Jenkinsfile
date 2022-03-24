@@ -24,11 +24,12 @@ pipeline {
       }
       stage('Helm') {
          steps {
-           sh 'pwd'
-           sh 'cd /var/lib/jenkins/workspace/Sooraj/new-dev/Sooraj/helm'
-           sh 'pwd'
-           sh 'ls /var/lib/jenkins/workspace/Sooraj/new-dev/Sooraj/helm'
-           sh 'helm upgrade warnerbro warnerbros -n dev -f values-dev.yaml /var/lib/jenkins/workspace/Sooraj/new-dev/Sooraj/helm'
+           sh '''
+           cd /var/lib/jenkins/workspace/Sooraj/new-dev/Sooraj/helm
+           pwd
+           ls /var/lib/jenkins/workspace/Sooraj/new-dev/Sooraj/helm
+           helm upgrade warnerbro warnerbros -n dev -f values-dev.yaml
+           '''
          }
       }
     }
