@@ -47,7 +47,7 @@ pipeline {
         slackSend channel: ' project-team', message: 'job failed'
       }
       success {
-        \\slackSend channel: ' project-team', message: 'job Success'
+        //slackSend channel: ' project-team', message: 'job Success'
         slackSend channel: 'project-team', color: 'red', failOnError: true, message: 'done', teamDomain: 'jenkins'
       }
     }
