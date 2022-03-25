@@ -29,6 +29,7 @@ pipeline {
            mkdir warnerdevops
            cd warnerdevops
            git clone https://github.com/Aatmaani-org/Devops.git
+           pwd
          '''  
          }
       }
