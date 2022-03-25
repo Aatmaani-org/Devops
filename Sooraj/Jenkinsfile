@@ -18,7 +18,6 @@ pipeline {
           '''
         }
       }
-       /*
       stage('Clone Devops') {
          steps {
            sh '''
@@ -28,7 +27,6 @@ pipeline {
          '''  
          }
       }
-        */
       stage('Helm') {
          steps {
            sh '''
