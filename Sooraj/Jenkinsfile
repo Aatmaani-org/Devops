@@ -2,6 +2,11 @@ pipeline {
     agent any
 
     stages {
+      stage('Cleaning the directory') {
+        steps {
+          sh 'rm -rf *'
+        }
+      }
       stage('Clone Production') {
         steps {
           git branch: 'main', url: 'https://github.com/Aatmaani-org/Production.git'
