@@ -43,7 +43,7 @@ pipeline {
     
     post {
       failure {
-        slackSend channel: "project-team", color: '#AA1100', message: "Build Status: Failure ${env.JOB_NAME} ${env.BUILD_NUMBER} ${env.BUILD_URL}"
+        slackSend channel: "project-team", color: 'danger', message: "Build Status: Failure ${env.JOB_NAME} ${env.BUILD_NUMBER} ${env.BUILD_URL}"
         }
       
       success {
