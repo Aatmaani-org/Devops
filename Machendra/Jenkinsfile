@@ -9,7 +9,7 @@ pipeline {
     }
     stage ('Build Images') {
       steps{
-        sh 'docker build -t node-app .'
+        sh 'docker build -t node-app --build-arg GIT_COMMIT=$(git log -1 --format=%h) .'
      }
     }
     stage ('Push image to ECR') {
