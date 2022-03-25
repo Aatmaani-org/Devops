@@ -14,9 +14,9 @@ pipeline {
     }
     stage ('Push image to ECR') {
       steps{
-        sh ''' docker tag node-app 883195043912.dkr.ecr.us-west-2.amazonaws.com/nodejs-repository:node-app
+        sh ''' docker tag node-app 883195043912.dkr.ecr.us-west-2.amazonaws.com/nodejs-repository:$(git log -1 --format=%h)
         aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 883195043912.dkr.ecr.us-west-2.amazonaws.com
-        docker push 883195043912.dkr.ecr.us-west-2.amazonaws.com/nodejs-repository:node-app
+        docker push 883195043912.dkr.ecr.us-west-2.amazonaws.com/nodejs-repository:$(git log -1 --format=%h)
         cd
         '''
       }
