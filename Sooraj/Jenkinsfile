@@ -2,27 +2,28 @@ pipeline {
     agent any
 
     stages {
+      stage('Cleaning the directory') {
+        steps {
+          sh 'rm -rf *'
+        }
+      }
       stage('Clone Production') {
         steps {
-          sh '''
-          #mkdir warnerprod 
-          #cd warnerprod
-          #git clone https://github.com/Aatmaani-org/Production.git
-        '''
+          git branch: 'main', url: 'https://github.com/Aatmaani-org/Production.git'
         }
       }
       stage('Build and push the image to ECR') {
         steps {
           sh '''
-          cd /var/lib/jenkins/workspace/Sooraj/new-dev/warnerprod/Production
+          cd /var/lib/jenkins/workspace/Sooraj/new-dev/
 	  docker build -t new-nodejs --build-arg GIT_COMMIT=$(git log -1 --format=%h) .
-          #cd /var/lib/jenkins/workspace/Sooraj/new-dev/Sooraj
           docker tag new-nodejs:latest 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:$(git log -1 --format=%h)
+          docker tag new-nodejs:latest 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:node_demo
           docker push 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:$(git log -1 --format=%h)
+          docker push 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:node_demo
           '''
         }
       }
-       /*
       stage('Clone Devops') {
          steps {
            sh '''
@@ -32,11 +33,10 @@ pipeline {
          '''  
          }
       }
-        */
       stage('Helm') {
          steps {
            sh '''
-           cd /var/lib/jenkins/workspace/Sooraj/new-dev/Sooraj/helm
+           cd /var/lib/jenkins/workspace/Sooraj/new-dev/warnerdevops/Devops/Sooraj/helm
            helm upgrade --install warnerbro warnerbros -n dev -f values-dev.yaml
            '''
          }
