@@ -15,7 +15,7 @@ pipeline {
       stage('Build and push the image to ECR') {
         steps {
           sh '''
-          cd /var/lib/jenkins/workspace/Sooraj/new-dev/
+          cd /var/lib/jenkins/workspace/Sooraj/node-app
 	  docker build -t new-nodejs --build-arg GIT_COMMIT=$(git log -1 --format=%h) .
           docker tag new-nodejs:latest 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:$(git log -1 --format=%h)
           docker tag new-nodejs:latest 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:node_demo
