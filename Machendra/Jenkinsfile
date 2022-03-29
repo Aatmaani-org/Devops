@@ -10,8 +10,7 @@ pipeline {
     
     stage ('creating Dir') {
       steps{
-      sh ''' mkdir jenkins
-      cd jenkins
+      sh ''' cd jenkins
       git clone https://github.com/Aatmaani-org/Devops.git
       '''
       }
