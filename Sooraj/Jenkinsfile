@@ -43,7 +43,10 @@ pipeline {
       }
       stage('Tag and push the image to ECR') {
         steps {
-          sh 'bash qa_tag.sh'
+          sh '''
+          cd warnerdevops/Devops/Sooraj
+          bash qa_tag.sh
+          '''
         }
       }
     }
