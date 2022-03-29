@@ -25,7 +25,7 @@ pipeline {
         steps {
           sh '''
           cd warnerdevops/Devops/Sooraj
-          pwd
+          build_push.sh
           '''
         }
       }
