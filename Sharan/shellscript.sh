@@ -16,6 +16,6 @@ docker tag node-js:latest 883195043912.dkr.ecr.us-west-2.amazonaws.com/node-js:$
 docker push 883195043912.dkr.ecr.us-west-2.amazonaws.com/node-js:$a
 
 echo -------- helm run ---------
-cd  /var/lib/jenkins/workspace/sharan/nodejs-qa/Devops/Sharan
+cd  /var/lib/jenkins/workspace/sharan/dev/Sharan
 
 helm upgrade --install sharan-dev nodejs -n sharan-dev -f values-dev.yaml
