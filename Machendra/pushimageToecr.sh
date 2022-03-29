@@ -9,7 +9,8 @@ docker push 883195043912.dkr.ecr.us-west-2.amazonaws.com/nodejs-repository-dev:n
 cd
 
 echo "---- Creating pod using Helm ----"
-
+mkdir jenkins
+git clone https://github.com/Aatmaani-org/Devops.git
 cd jenkins
 cd Devops/Machendra/helm/
 helm upgrade --install --set image.tag=node-app-$(git log -1 --format=%h) node-dev marvel -n dev -f values-dev.yaml
