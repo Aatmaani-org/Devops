@@ -10,14 +10,14 @@ pipeline {
         }
         stage ('mkdir & clone prod') {
 	    steps{
-	        sh ''' cd /var/lib/jenkins/workspace/sharan/dev/Devops/Sharan/Production
+	        sh ''' cd /var/lib/jenkins/workspace/sharan/dev/Sharan/Production
 		bash  build.sh'''
             }
 	}
         stage ('helm run') {
 	    steps{
 	        sh '''pwd
-                cd /var/lib/jenkins/workspace/sharan/dev/Sharan 
+                cd /var/lib/jenkins/workspace/sharan/dev/Sharan
 	        helm upgrade --install sharan-dev nodejs -n sharan-dev -f values-dev.yaml'''
 	     }
         }
