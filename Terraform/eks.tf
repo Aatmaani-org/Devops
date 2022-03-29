@@ -71,6 +71,7 @@ resource "aws_eks_cluster" "team" {
 
   vpc_config {
     subnet_ids = [aws_subnet.public-subnet-1.id,aws_subnet.public-subnet-2.id]
+    endpoint_private_access = true
   }
 
   # Ensure that IAM Role permissions are created before and deleted after EKS Cluster handling.
@@ -142,3 +143,44 @@ resource "aws_iam_role_policy_attachment" "team-AmazonEC2ContainerRegistryReadOn
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
   role       = aws_iam_role.team.name
 }
+
+
+
+#aws_spot_fleet_request
+/*
+resource "aws_spot_fleet_request" "cheap_compute" {
+  iam_fleet_role      = "arn:aws:iam::12345678:role/spot-fleet"
+  spot_price          = "0.03"
+  allocation_strategy = "diversified"
+  target_capacity     = 6
+  valid_until         = "2019-11-04T20:44:20Z"
+
+  launch_specification {
+    instance_type            = "t3.medium"
+    ami                      = ""
+    spot_price               = "2.793"
+    placement_tenancy        = "dedicated"
+    iam_instance_profile_arn = aws_iam_instance_profile.example.arn
+  }
+
+  launch_specification {
+    instance_type            = "t3.medium"
+    ami                      = "ami-0892d3c7ee96c0bf7"
+    key_name                 = "team"
+    spot_price               = "1.117"
+    iam_instance_profile_arn = aws_iam_instance_profile.example.arn
+    availability_zone        = "us-west-1a"
+    subnet_id                = "aws_subnet.public-subnet-1.id"
+    weighted_capacity        = 35
+
+    root_block_device {
+      volume_size = "300"
+      volume_type = "gp2"
+    }
+
+    tags = {
+      Name = "spot-fleet-example"
+    }
+  }
+}
+*/
