@@ -8,5 +8,5 @@ a=`git log -1 --format=%h`
 docker build -t new-nodejs .
 docker tag new-nodejs:latest 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:$a
 docker tag new-nodejs:latest 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:dev-latest
-docker push 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:$a
-docker push 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:dev-latest
+docker push 883195043912.dkr.ecr.us-west-2.amazonaws.com/nodejs:$a
+docker push 883195043912.dkr.ecr.us-west-2.amazonaws.com/nodejs:dev-latest
