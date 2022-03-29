@@ -4,8 +4,7 @@ pipeline {
     stages {
         stage ('clean everything and clone ') {
             steps{
-                sh ''' sudo rm -rf *
-		git clone https://github.com/Aatmaani-org/Devops.git '''
+                sh ' bash /var/lib/jenkins/workspace/sharan/dev/Sharan/git-clone.sh
 	    }
         }
         stage ('mkdir & clone prod') {
