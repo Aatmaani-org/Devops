@@ -29,9 +29,7 @@ pipeline {
       stage('Build and push the image to ECR') {
         steps {
           sh '''
-          pwd
           cd warnerdevops/Devops/Sooraj
-          ls
           bash build_push.sh
           '''
         }
@@ -39,7 +37,7 @@ pipeline {
       stage('Helm') {
          steps {
            sh '''
-           cd /var/lib/jenkins/workspace/Sooraj/node-app/warnerdevops/Devops/Sooraj/helm
+           cd warnerdevops/Devops/Sooraj/helm
            helm upgrade --install warnerbro warnerbros -n dev -f values-dev.yaml
            '''
          }
