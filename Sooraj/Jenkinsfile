@@ -36,7 +36,7 @@ pipeline {
       stage('Helm') {
          steps {
            sh '''
-           cd /var/lib/jenkins/workspace/Sooraj/new-dev/warnerdevops/Devops/Sooraj/helm
+           cd /var/lib/jenkins/workspace/Sooraj/node-app/warnerdevops/Devops/Sooraj/helm
            helm upgrade --install warnerbro warnerbros -n dev -f values-dev.yaml
            '''
          }
