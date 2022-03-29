@@ -28,7 +28,7 @@ pipeline {
           ls
           cd warnerdevops/Devops/Sooraj
           ls
-          bash build_push.sh
+          bash /var/lib/jenkins/workspace/Sooraj/node-app/warnerdevops/Devops/Sooraj/build_push.sh
           '''
         }
       }
