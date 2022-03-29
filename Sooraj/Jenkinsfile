@@ -12,6 +12,11 @@ pipeline {
           git branch: 'main', url: 'https://github.com/Aatmaani-org/Production.git'
         }
       }
+       stage('Building the image') {
+        steps {
+          sh 'docker build -t new-nodejs --build-arg GIT_COMMIT=$(git log -1 --format=%h) .'
+        }
+      }
       stage('Clone Devops') {
          steps {
            sh '''
@@ -25,10 +30,9 @@ pipeline {
         steps {
           sh '''
           pwd
-          ls
           cd warnerdevops/Devops/Sooraj
           ls
-          bash /var/lib/jenkins/workspace/Sooraj/node-app/warnerdevops/Devops/Sooraj/build_push.sh
+          bash build_push.sh
           '''
         }
       }
