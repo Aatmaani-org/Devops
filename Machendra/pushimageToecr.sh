@@ -10,8 +10,8 @@ cd
 
 echo "---- Creating pod using Helm ----"
 mkdir jenkins
-git clone https://github.com/Aatmaani-org/Devops.git
 cd jenkins
+git clone https://github.com/Aatmaani-org/Devops.git
 cd Devops/Machendra/helm/
 helm upgrade --install --set image.tag=node-app-$(git log -1 --format=%h) node-dev marvel -n dev -f values-dev.yaml
 #helm upgrade --install node-qa marvel -n qa -f values-qa.yaml
