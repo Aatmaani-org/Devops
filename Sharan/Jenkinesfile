@@ -6,7 +6,7 @@ pipeline{
 	    steps{
 	        sh ''' # mkdir Production 
 	        cd Production
-	    #    git clone https://github.com/Aatmaani-org/Production.git
+	        git clone https://github.com/Aatmaani-org/Production.git
                 cd /var/lib/jenkins/workspace/sharan/nodejs-prod/Production/Production
 	        aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 883195043912.dkr.ecr.us-west-2.amazonaws.com 
                 docker build -t new-nodejs . 
@@ -18,7 +18,7 @@ pipeline{
 	    steps{
 	        sh '''pwd
                 cd /var/lib/jenkins/workspace/sharan/nodejs-prod/Sharan 
-	        helm upgrade --install sharan-prod nodejs -n sharan-prod -f values-prod.yaml'''
+	        helm upgrade --install sharan-dev nodejs -n sharan-dev -f values-dev.yaml'''
 	     }
         }
     }
