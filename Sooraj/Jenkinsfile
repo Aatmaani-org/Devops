@@ -23,8 +23,10 @@ pipeline {
       }
       stage('Build and push the image to ECR') {
         steps {
-          sh 'ls'
-          sh 'pwd'
+          sh '''
+          cd warnerdevops/Devops
+          pwd
+          '''
         }
       }
       stage('Helm') {
