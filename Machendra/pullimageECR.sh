@@ -5,7 +5,7 @@ docker pull 883195043912.dkr.ecr.us-west-2.amazonaws.com/nodejs-repository-dev:d
 
 echo "---- Tagging the Image and Push Image to ECR ----"
 
-docker tag node-app:latest 883195043912.dkr.ecr.us-west-2.amazonaws.com/nodejs-repository-dev:qa-latest
+docker tag dev-latest 883195043912.dkr.ecr.us-west-2.amazonaws.com/nodejs-repository-dev:qa-latest
 docker push 883195043912.dkr.ecr.us-west-2.amazonaws.com/nodejs-repository-dev:qa-latest
 
 echo "---- Creating the Pods using HELM ----"
