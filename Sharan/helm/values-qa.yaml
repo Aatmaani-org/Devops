@@ -1,14 +1,14 @@
-# Default values for marvel.
+# Default values for nodejs-project.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 image:
-  repository: 883195043912.dkr.ecr.us-west-2.amazonaws.com/nodejs-repository-dev
+  repository: 883195043912.dkr.ecr.us-west-2.amazonaws.com/nodejs-repository
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "node-app"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -70,12 +70,12 @@ resources:
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-   limits:
-     cpu: 100m
-     memory: 128Mi
-   requests:
-     cpu: 100m
-     memory: 128Mi
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
 
 autoscaling:
   enabled: false
