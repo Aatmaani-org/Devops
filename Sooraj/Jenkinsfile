@@ -24,7 +24,7 @@ pipeline {
       stage('Build and push the image to ECR') {
         steps {
           sh '''
-          cd warnerdevops/Devops
+          cd warnerdevops/Devops/Sooraj
           pwd
           '''
         }
