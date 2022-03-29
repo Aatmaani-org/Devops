@@ -10,7 +10,7 @@ pipeline {
         }
         stage ('mkdir & clone prod') {
 	    steps{
-	        sh ''' cd 
+	        sh ''' cd Production
 		bash  build.sh'''
             }
 	}
