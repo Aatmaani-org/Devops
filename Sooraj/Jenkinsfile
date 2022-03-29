@@ -41,7 +41,7 @@ pipeline {
            '''
          }
       }
-      stage('Build and push the image to ECR') {
+      stage('Tag and push the image to ECR') {
         steps {
           sh 'bash qa_tag.sh'
         }
