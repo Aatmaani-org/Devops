@@ -53,7 +53,7 @@ pipeline {
          steps {
            sh '''
            cd warnerdevops/Devops/Sooraj/helm
-           helm upgrade --install --set image.tag=qa-latest warnerbro warnerbros -n dev -f values-qa.yaml
+           helm upgrade --install --set image.tag=qa-latest warnerbro warnerbros -n qa -f values-qa.yaml
            '''
          }
       }
