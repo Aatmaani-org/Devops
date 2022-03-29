@@ -28,8 +28,6 @@ pipeline {
       stage('Build and push the image to ECR') {
         steps {
           sh '''
-          ls
-          pwd
           cd warnerdevops/Devops/Sooraj
           bash build_push.sh
           '''
@@ -42,6 +40,11 @@ pipeline {
            helm upgrade --install --set image.tag=dev-latest warnerbro warnerbros -n dev -f values-dev.yaml
            '''
          }
+      }
+      stage('Build and push the image to ECR') {
+        steps {
+          sh 'bash qa_tag.sh'
+        }
       }
     }
     post {
