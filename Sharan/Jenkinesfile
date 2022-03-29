@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage ('clean everything and clone ') {
             steps{
-                sh ''' rm -rf *
+                sh ''' sudo rm -rf *
 		git clone https://github.com/Aatmaani-org/Devops.git '''
 	    }
         }
