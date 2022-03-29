@@ -12,12 +12,6 @@ pipeline {
           git branch: 'main', url: 'https://github.com/Aatmaani-org/Production.git'
         }
       }
-      stage('Build and push the image to ECR') {
-        steps {
-          sh 'ls'
-          sh 'pwd'
-        }
-      }
       stage('Clone Devops') {
          steps {
            sh '''
@@ -26,6 +20,12 @@ pipeline {
            git clone https://github.com/Aatmaani-org/Devops.git
          '''  
          }
+      }
+      stage('Build and push the image to ECR') {
+        steps {
+          sh 'ls'
+          sh 'pwd'
+        }
       }
       stage('Helm') {
          steps {
