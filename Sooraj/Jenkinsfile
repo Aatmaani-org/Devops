@@ -25,7 +25,8 @@ pipeline {
         steps {
           sh '''
           cd warnerdevops/Devops/Sooraj
-          build_push.sh
+          ls
+          bash build_push.sh
           '''
         }
       }
