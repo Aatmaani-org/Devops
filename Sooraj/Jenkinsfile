@@ -9,12 +9,11 @@ pipeline {
       }
       stage('Clone Production') {
         steps {
-          git branch: 'main', url: 'https://github.com/Aatmaani-org/Production.git'
-        }
-      }
-       stage('Building the image') {
-        steps {
-          sh 'docker build -t new-nodejs --build-arg GIT_COMMIT=$(git log -1 --format=%h) .'
+          sh '''
+          mkdir warnerproduction
+          cd warnerproduction
+          git clone https://github.com/Aatmaani-org/Production.git
+          '''
         }
       }
       stage('Clone Devops') {
@@ -29,6 +28,8 @@ pipeline {
       stage('Build and push the image to ECR') {
         steps {
           sh '''
+          ls
+          pwd
           cd warnerdevops/Devops/Sooraj
           bash build_push.sh
           '''

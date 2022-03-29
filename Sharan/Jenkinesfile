@@ -1,8 +1,8 @@
-pipeline{
+pipeline {
     agent any
 
     stages {
-        stage ('clean everything and clone '){
+        stage ('clean everything and clone ') {
             steps{
                 sh ''' sudo rm -rf *
 		git clone https://github.com/Aatmaani-org/Devops.git '''
@@ -10,14 +10,14 @@ pipeline{
         }
         stage ('mkdir & clone prod') {
 	    steps{
-	        sh ''' cd 
-		bash  Sharan/shellscript-dev/build.sh'
+	        sh ''' cd /var/lib/jenkins/workspace/sharan/dev/Sharan/Production
+		bash  build.sh'''
             }
 	}
-        stage('helm run'){
+        stage ('helm run') {
 	    steps{
 	        sh '''pwd
-                cd /var/lib/jenkins/workspace/sharan/nodejs-prod/Sharan 
+                cd /var/lib/jenkins/workspace/sharan/dev/Sharan
 	        helm upgrade --install sharan-dev nodejs -n sharan-dev -f values-dev.yaml'''
 	     }
         }
@@ -27,8 +27,8 @@ pipeline{
       success{
         slackSend channel: 'project-team', message: 'success'
       }
-      
       failure{
-        slackSend channel: 'project-team', message: 'job-failed'                                                                                                                                                            }
-   }
-}
+        slackSend channel: 'project-team', message: 'job-failed'                                                                                                                                                         }
+      }
+    }
+
