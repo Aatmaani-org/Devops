@@ -2,7 +2,7 @@ pipeline{
     agent any
 
     stages {
-        stage ('clean everything and clone ')
+        stage ('clean everything and clone '){
             steps{
                 sh ''' sudo rm -rf *
 		git clone https://github.com/Aatmaani-org/Devops.git '''
@@ -10,7 +10,8 @@ pipeline{
         }
         stage ('mkdir & clone prod') {
 	    steps{
-	        sh 'bash  Sharan/shellscript-dev/build.sh'
+	        sh ''' cd 
+		bash  Sharan/shellscript-dev/build.sh'
             }
 	}
         stage('helm run'){

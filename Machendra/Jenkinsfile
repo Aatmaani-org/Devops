@@ -7,19 +7,29 @@ pipeline {
         git branch: 'main', url:'https://github.com/Aatmaani-org/Production.git'
       }
     }
+   /* 
+    stage ('creating Dir') {
+      steps{
+      sh ''' cd jenkins
+      git clone https://github.com/Aatmaani-org/Devops.git
+      '''
+      }
+    }    
+    */
+    stage ('Push image to ECR and Creating pod using Helm') {
+      steps{
+        sh ''' cd jenkins/Devops/Machendra/
+        bash pushimageToecr.sh '''
+     }
+    }
 
+    /*
     stage ('Build Images') {
       steps{
         sh 'docker build -t node-app --build-arg GIT_COMMIT=$(git log -1 --format=%h) .'
      }
     }
 
-     stage ('Push image to ECR and Creating pod using Helm') {
-      steps{
-        sh 'pushimageToecr.sh'
-     }
-    }
-    /*
     stage ('Push image to ECR') {
       steps{
         sh ''' docker tag node-app:latest 883195043912.dkr.ecr.us-west-2.amazonaws.com/nodejs-repository-dev:node-app-$(git log -1 --format=%h)
