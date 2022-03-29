@@ -7,7 +7,7 @@ pipeline {
         git branch: 'main', url:'https://github.com/Aatmaani-org/Production.git'
       }
     }
-    
+    /*
     stage ('creating Dir') {
       steps{
       sh ''' rm -rf jenkins
@@ -17,10 +17,11 @@ pipeline {
       '''
       }
     }    
-    
+    */
     stage ('Push image to ECR and Creating pod using Helm') {
       steps{
         sh ''' cd jenkins/Devops/Machendra/
+        cd 
         ls
         '''
      }
