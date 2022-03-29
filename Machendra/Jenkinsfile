@@ -21,7 +21,7 @@ pipeline {
         '''
       }
     }
-    /*
+    
     stage ('creating Dir') {
       steps{
       sh ''' mkdir jenkins
@@ -30,7 +30,7 @@ pipeline {
       '''
       }
     }
-    */
+    
     stage ('Creating pod using Helm') {
       steps{
         sh ''' cd jenkins
