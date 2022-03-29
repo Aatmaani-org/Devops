@@ -29,6 +29,7 @@ pipeline{
       }
       
       failure{
-        slackSend channel: 'project-team', message: 'job-failed'                                                                                                                                                            }
-   }
+        slackSend channel: 'project-team', message: 'job-failed'                                                                                                                                                         }
+    }
 }
+
