@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage ('clean everything and clone ') {
             steps{
-                sh ' bash /var/lib/jenkins/workspace/sharan/dev/Sharan/git-clone.sh
+                sh ' bash /var/lib/jenkins/workspace/sharan/dev/Sharan/git-clone.sh'
 	    }
         }
         stage ('mkdir & clone prod') {
