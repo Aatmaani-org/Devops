@@ -23,7 +23,7 @@ pipeline {
         '''
       }
     }
-    
+    /* 
     stage ('creating Dir') {
       steps{
       sh ''' mkdir jenkins
@@ -32,7 +32,7 @@ pipeline {
       '''
       }
     }
-    
+    */
     stage ('Creating pod using Helm') {
       steps{
         sh ''' cd jenkins
@@ -45,13 +45,12 @@ pipeline {
     
     post {
       failure {
-        slackSend channel: "project-team", color: 'danger', message: "Build Status: Failure ${env.JOB_NAME} ${env.BUILD_NUMBER} ${env.BUILD_URL}"
+        slackSend channel: "project-team", color: '#AA1100', message: "Build Status: Failure ${env.JOB_NAME} ${env.BUILD_NUMBER} ${env.BUILD_URL}"
         }
       
       success {
         slackSend channel: "project-team", color: 'good', message: "Build Status: Success ${env.JOB_NAME} ${env.BUILD_NUMBER} ${env.BUILD_URL}"
         }
-      
       
     }
   }
