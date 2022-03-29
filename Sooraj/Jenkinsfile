@@ -24,6 +24,7 @@ pipeline {
       stage('Build and push the image to ECR') {
         steps {
           sh '''
+          ls
           cd warnerdevops/Devops/Sooraj
           ls
           bash build_push.sh
