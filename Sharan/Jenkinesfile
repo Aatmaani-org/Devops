@@ -2,7 +2,7 @@ pipeline{
     agent any
 
     stages {
-        stage ('clean everything and clone '){
+        stage ('clean everything and clone ') {
             steps{
                 sh ''' sudo rm -rf *
 		git clone https://github.com/Aatmaani-org/Devops.git '''
@@ -14,7 +14,7 @@ pipeline{
 		bash  Sharan/shellscript-dev/build.sh'
             }
 	}
-        stage('helm run'){
+        stage ('helm run') {
 	    steps{
 	        sh '''pwd
                 cd /var/lib/jenkins/workspace/sharan/nodejs-prod/Sharan 
@@ -30,6 +30,6 @@ pipeline{
       
       failure{
         slackSend channel: 'project-team', message: 'job-failed'                                                                                                                                                         }
+      }
     }
 }
-
