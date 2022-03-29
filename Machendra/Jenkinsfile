@@ -23,6 +23,8 @@ pipeline {
         sh ''' cd jenkins/Devops/Machendra/
         cd 
         ls
+        cd workspace
+        ls
         '''
      }
     }
