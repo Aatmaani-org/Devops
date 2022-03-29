@@ -16,7 +16,7 @@ key_name = "team"
 
 # EKS Variables
 
-instance_type_eks = "t3.medium"
+instance_type_eks = "t3.small"
 
 capacity_type_eks = "SPOT"
 

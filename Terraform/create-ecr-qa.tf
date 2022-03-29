@@ -18,7 +18,7 @@ variable "lifecycle_policy1" {
   description = "Contents of the ECR lifecycle policy"
 }
 
-# ECR
+# Elastic Container Registry:
 
 resource "aws_ecr_repository" "node-app-qa" {
   name = var.repository_name1
