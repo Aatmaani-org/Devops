@@ -1,4 +1,4 @@
-pipeline{
+pipeline {
     agent any
 
     stages {
@@ -17,7 +17,7 @@ pipeline{
         stage ('helm run') {
 	    steps{
 	        sh '''pwd
-                cd /var/lib/jenkins/workspace/sharan/nodejs-prod/Sharan 
+                cd /var/lib/jenkins/workspace/sharan/dev/Sharan 
 	        helm upgrade --install sharan-dev nodejs -n sharan-dev -f values-dev.yaml'''
 	     }
         }
@@ -27,7 +27,6 @@ pipeline{
       success{
         slackSend channel: 'project-team', message: 'success'
       }
-      
       failure{
         slackSend channel: 'project-team', message: 'job-failed'                                                                                                                                                         }
       }
