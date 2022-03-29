@@ -10,7 +10,7 @@ pipeline{
         }
         stage ('mkdir & clone prod') {
 	    steps{
-	        sh 'bash build.sh'
+	        sh 'bash  Sharan/shellscript-dev/build.sh'
             }
 	}
         stage('helm run'){
