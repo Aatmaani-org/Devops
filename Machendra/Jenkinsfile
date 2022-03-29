@@ -14,6 +14,12 @@ pipeline {
      }
     }
 
+     stage ('Push image to ECR and Creating pod using Helm') {
+      steps{
+        sh 'pushimageToecr.sh'
+     }
+    }
+    /*
     stage ('Push image to ECR') {
       steps{
         sh ''' docker tag node-app:latest 883195043912.dkr.ecr.us-west-2.amazonaws.com/nodejs-repository-dev:node-app-$(git log -1 --format=%h)
@@ -25,7 +31,7 @@ pipeline {
         '''
       }
     }
-    /* 
+    
     stage ('creating Dir') {
       steps{
       sh ''' mkdir jenkins
@@ -34,7 +40,7 @@ pipeline {
       '''
       }
     }
-    */
+    
     stage ('Creating pod using Helm') {
       steps{
         sh ''' cd jenkins
@@ -44,6 +50,7 @@ pipeline {
         '''
         }
       }
+    */
     }
     
     post {
