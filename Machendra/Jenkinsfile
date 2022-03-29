@@ -7,63 +7,25 @@ pipeline {
         git branch: 'main', url:'https://github.com/Aatmaani-org/Production.git'
       }
     }
-   /* 
-    stage ('creating Dir') {
-      steps{
-      sh ''' cd jenkins
-      git clone https://github.com/Aatmaani-org/Devops.git
-      '''
-      }
-    }    
-    */
-    stage ('Push image to ECR and Creating pod using Helm') {
-      steps{
-        sh ''' cd jenkins/Devops/Machendra/
-        ls
-        bash pushimageToecr.sh '''
-     }
-    }
-
-    /*
-    stage ('Build Images') {
-      steps{
-        sh 'docker build -t node-app --build-arg GIT_COMMIT=$(git log -1 --format=%h) .'
-     }
-    }
-
-    stage ('Push image to ECR') {
-      steps{
-        sh ''' docker tag node-app:latest 883195043912.dkr.ecr.us-west-2.amazonaws.com/nodejs-repository-dev:node-app-$(git log -1 --format=%h)
-        docker tag node-app:latest 883195043912.dkr.ecr.us-west-2.amazonaws.com/nodejs-repository-dev:node-demo
-        aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 883195043912.dkr.ecr.us-west-2.amazonaws.com
-        docker push 883195043912.dkr.ecr.us-west-2.amazonaws.com/nodejs-repository-dev:node-app-$(git log -1 --format=%h)
-        docker push 883195043912.dkr.ecr.us-west-2.amazonaws.com/nodejs-repository-dev:node-demo
-        cd
-        '''
-      }
-    }
     
     stage ('creating Dir') {
       steps{
-      sh ''' mkdir jenkins
+      sh ''' rm -rf jenkins
+      mkdir jenkins
       cd jenkins
       git clone https://github.com/Aatmaani-org/Devops.git
       '''
       }
-    }
+    }    
     
-    stage ('Creating pod using Helm') {
+    stage ('Push image to ECR and Creating pod using Helm') {
       steps{
-        sh ''' cd jenkins
-        cd Devops/Machendra/helm/
-        helm upgrade --install --set image.tag=node-app-$(git log -1 --format=%h) node-dev marvel -n dev -f values-dev.yaml
-        #helm upgrade --install node-qa marvel -n qa -f values-qa.yaml
+        sh ''' cd jenkins/Devops/Machendra/
+        ls
         '''
-        }
-      }
-    */
+     }
     }
-    
+  }
     post {
       failure {
         slackSend channel: "project-team", color: 'danger', message: "Build Status: Failure ${env.JOB_NAME} ${env.BUILD_NUMBER} ${env.BUILD_URL}"
