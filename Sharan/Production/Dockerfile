@@ -8,6 +8,4 @@ WORKDIR express-website/
 RUN npm install
 RUN npm install --save nodemailer
 EXPOSE 3000
-#ARG GIT_COMMIT=unspecified
-#LABEL git_commit=$GIT_COMMIT
 ENTRYPOINT ["npm", "start"]
