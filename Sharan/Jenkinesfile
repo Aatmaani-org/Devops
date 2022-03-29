@@ -10,7 +10,7 @@ pipeline {
         }
         stage ('mkdir & clone prod') {
 	    steps{
-	        sh ''' cd Production
+	        sh ''' cd /var/lib/jenkins/workspace/sharan/dev/Devops/Sharan/Production
 		bash  build.sh'''
             }
 	}
