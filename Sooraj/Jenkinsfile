@@ -33,7 +33,7 @@ pipeline {
           '''
         }
       }
-      stage('Helm') {
+      stage('Helm-dev') {
          steps {
            sh '''
            cd warnerdevops/Devops/Sooraj/helm
@@ -48,6 +48,14 @@ pipeline {
           bash qa_tag.sh
           '''
         }
+      }
+      stage('Helm-qa') {
+         steps {
+           sh '''
+           cd warnerdevops/Devops/Sooraj/helm
+           helm upgrade --install --set image.tag=qa-latest warnerbro warnerbros -n dev -f values-qa.yaml
+           '''
+         }
       }
     }
     post {
