@@ -27,7 +27,9 @@ pipeline {
     
     stage ('Push image to ECR and Creating pod using Helm') {
       steps{
-        sh ''' cd jenkins/Devops/Machendra/
+        sh ''' pwd
+        ls 
+        cd jenkins/Devops/Machendra/
         bash pushimageToecr.sh
         '''
      }
