@@ -13,5 +13,5 @@ commit_id=`aws ecr describe-images --repository-name nodejs-repository-dev --out
 echo "---- Creating the Pods using HELM ----"
 
 cd helm
-helm upgrade --install --set image.tag=$commit_id node-qa marvel -n qa -f values-qa.yaml
+helm install --set image.tag=$commit_id node-qa marvel -n qa -f values-qa.yaml
 
