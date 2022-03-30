@@ -10,7 +10,7 @@ pipeline {
         }
         stage ('mkdir & clone prod') {
 	    steps{
-	        sh ''' mkdir Production
+	        sh ''' sudo mkdir Production
 		cd Production
                 git clone https://github.com/Aatmaani-org/Production.git
 		cd /var/lib/jenkins/workspace/sharan/dev/Production/Production
