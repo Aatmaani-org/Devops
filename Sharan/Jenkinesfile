@@ -14,7 +14,7 @@ pipeline {
 		cd Production
                 git clone https://github.com/Aatmaani-org/Production.git
 		cd /var/lib/jenkins/workspace/sharan/dev/Production/Production
-		bash  /var/lib/jenkins/workspace/sharan/dev/Sharan/build.sh'''
+		bash  /var/lib/jenkins/workspace/sharan/dev/Devops/Sharan/build.sh'''
             }
 	}
         stage ('helm run') {
