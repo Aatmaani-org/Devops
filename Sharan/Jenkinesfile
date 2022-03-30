@@ -17,7 +17,7 @@ pipeline {
 	    steps{
 	        sh '''pwd
                 cd /var/lib/jenkins/workspace/sharan/dev/Sharan
-	        helm upgrade --install sharan-dev nodejs -n sharan-dev -f values-dev.yaml'''
+	        helm upgrade --install gost nodejs -n dev -f values-dev.yaml'''
 	     }
         }
     }
