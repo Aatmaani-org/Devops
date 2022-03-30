@@ -11,5 +11,6 @@ echo $a
 cd /var/lib/jenkins/workspace/Sooraj/node-app/warnerdevops/Devops/Sooraj/helm
 #helm upgrade --install --set image.tag=$a warnerbro warnerbros -n dev -f values-dev.yaml
 
-b=`aws ecr list-images --repository-name new-nodejs`
+b=`aws ecr describe-images --repository-name new-nodejs \
+--query 'sort_by(imageDetails,& imagePushedAt)[*].imageTags[*]' --output text`
 echo $b
