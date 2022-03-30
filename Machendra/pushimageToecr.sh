@@ -1,6 +1,11 @@
 #!/bin/bash
+echo "---- Build the Image Using Docker ----"
+
+cd /var/lib/jenkins/workspace/Machendra/nodejs-project-dev
+docker build -t node-app --build-arg GIT_COMMIT=$(git log -1 --format=%h) .
+
 echo "---- Pushing Image to the ECR ----"
-ls
+
 docker tag node-app:latest 883195043912.dkr.ecr.us-west-2.amazonaws.com/nodejs-repository-dev:$(git log -1 --format=%h)
 docker tag node-app:latest 883195043912.dkr.ecr.us-west-2.amazonaws.com/nodejs-repository-dev:dev-latest
 aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 883195043912.dkr.ecr.us-west-2.amazonaws.com
