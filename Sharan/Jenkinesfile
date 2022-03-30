@@ -4,23 +4,23 @@ pipeline {
     stages {
         stage ('clean everything and clone ') {
             steps{
-                sh ''' sudo -S rm -rf *
+                sh ''' rm -rf *
                 git clone https://github.com/Aatmaani-org/Devops.git '''
 	    }
         }
         stage ('mkdir & clone prod') {
 	    steps{
-	        sh ''' mkdir Production
+	        sh '''  mkdir Production
 		cd Production
                 git clone https://github.com/Aatmaani-org/Production.git
 		cd /var/lib/jenkins/workspace/sharan/dev/Production/Production
-		bash  /var/lib/jenkins/workspace/sharan/dev/Sharan/build.sh'''
+		bash  /var/lib/jenkins/workspace/sharan/dev/Devops/Sharan/build.sh'''
             }
 	}
         stage ('helm run') {
 	    steps{
 	        sh '''pwd
-                cd /var/lib/jenkins/workspace/sharan/dev/Sharan
+                cd /var/lib/jenkins/workspace/sharan/dev/Devops/Sharan
 	        helm upgrade --install gost nodejs -n dev -f values-dev.yaml'''
 	     }
         }
