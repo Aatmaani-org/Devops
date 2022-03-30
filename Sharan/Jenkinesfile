@@ -4,13 +4,14 @@ pipeline {
     stages {
         stage ('clean everything and clone ') {
             steps{
-                sh ' bash /var/lib/jenkins/workspace/sharan/dev/Sharan/git-clone.sh'
+                sh ''' sudo -S rm -rf *
+                git clone https://github.com/Aatmaani-org/Devops.git '''
 	    }
         }
         stage ('mkdir & clone prod') {
 	    steps{
-	        sh ''' cd /var/lib/jenkins/workspace/sharan/dev/Sharan/Production
-		bash  build.sh'''
+	        sh ''' cd /var/lib/jenkins/workspace/sharan/dev/Production/Production
+		bash  /var/lib/jenkins/workspace/sharan/dev/Sharan/build.sh'''
             }
 	}
         stage ('helm run') {
