@@ -61,6 +61,14 @@ pipeline {
          }
       }
      */
+      stage('Helm-qa') {
+         steps {
+           sh '''
+           cd warnerdevops/Devops/Sooraj
+           bash prod_tag.sh
+           '''
+         }
+      }
     }
     post {
       failure {
