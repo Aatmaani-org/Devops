@@ -20,7 +20,7 @@ pipeline {
         stage ('helm run') {
 	    steps{
 	        sh '''pwd
-                cd /var/lib/jenkins/workspace/sharan/dev/Sharan
+                cd /var/lib/jenkins/workspace/sharan/dev/Devops/Sharan
 	        helm upgrade --install gost nodejs -n dev -f values-dev.yaml'''
 	     }
         }
