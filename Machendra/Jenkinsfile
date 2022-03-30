@@ -32,14 +32,15 @@ pipeline {
         '''
      }
     }
-
+    /*
     stage ('Pull image to ECR and Creating pod using Helm in QA') {
       steps{
         sh ''' cd jenkins/Devops/Machendra/
         bash pullimageECR.sh
         '''
      }
-    }  
+    } 
+    */ 
 
   }
     post {
