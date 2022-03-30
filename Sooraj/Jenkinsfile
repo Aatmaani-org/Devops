@@ -33,6 +33,7 @@ pipeline {
           '''
         }
       }
+      /*
       stage('Helm-dev') {
          steps {
            sh '''
@@ -41,6 +42,7 @@ pipeline {
            '''
          }
       }
+      */
       stage('Tag and push the image to ECR') {
         steps {
           sh '''
@@ -49,6 +51,7 @@ pipeline {
           '''
         }
       }
+      /*
       stage('Helm-qa') {
          steps {
            sh '''
@@ -57,6 +60,7 @@ pipeline {
            '''
          }
       }
+     */
     }
     post {
       failure {
