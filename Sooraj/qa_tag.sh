@@ -1,6 +1,5 @@
 #!/bin/bash
-a=`aws ecr describe-images --repository-name new-nodejs \
---query 'sort_by(imageDetails,& imagePushedAt)[-1].imageTags[1]' --output text`
+a=`aws ecr describe-images --repository-name new-nodejs | grep -2 dev-latest | awk 'NR==1{print $1}' --output text`
 echo $a
 image="883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs"
 docker pull $image:$a
