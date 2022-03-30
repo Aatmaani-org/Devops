@@ -5,6 +5,6 @@ docker tag new-nodejs:latest 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-no
 docker tag new-nodejs:latest 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:dev-latest
 docker push 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:$(git log -1 --format=%h)
 docker push 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:dev-latest
-a="aws ecr describe-images --repository-name new-nodejs \
---query 'sort_by(imageDetails,& imagePushedAt)[-1].imageTags[0]'"
+a=aws ecr describe-images --repository-name new-nodejs \
+--query 'sort_by(imageDetails,& imagePushedAt)[-1].imageTags[0]'
 echo $a
