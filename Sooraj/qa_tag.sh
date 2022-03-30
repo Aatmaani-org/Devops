@@ -7,4 +7,4 @@ docker pull $image:$a
 docker tag  $image:$a $image:qa-latest
 docker push $image:qa-latest
 cd /var/lib/jenkins/workspace/Sooraj/node-app/warnerdevops/Devops/Sooraj/helm
-helm upgrade --install --set image.tag=$a warnerbro warnerbros -n qa -f values-dev.yaml
+helm upgrade --install --set image.tag=$a warnerbro warnerbros -n qa -f values-qa.yaml
