@@ -7,7 +7,7 @@ pipeline {
            sh '''
            ls
            pwd
-           cd warnerdevops/Devops/Sooraj
+           cd Sooraj
            bash -e prod_tag.sh
            '''
          }

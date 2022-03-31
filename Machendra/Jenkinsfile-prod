@@ -2,25 +2,6 @@ pipeline {
   agent any
   
   stages {
-    /* 
-    stage ('Build Images') {
-      steps{
-        sh 'docker build -t node-app --build-arg GIT_COMMIT=$(git log -1 --format=%h) .'
-     }
-    }
-    
-    
-    stage ('creating Dir') {
-      steps{
-      sh ''' rm -rf jenkins
-      mkdir jenkins
-      cd jenkins
-      git clone https://github.com/Aatmaani-org/Devops.git
-      '''
-      }
-    }    
-    */
-     
     stage ('Pull image to ECR and Creating pod using Helm in PROD') {
       steps{
         sh ''' ls 
