@@ -42,7 +42,7 @@ pipeline {
            '''
          }
       }
-      */
+      
       stage('Tag and push the image to ECR') {
         steps {
           sh '''
@@ -51,7 +51,7 @@ pipeline {
           '''
         }
       }
-      /*
+      
       stage('Helm-qa') {
          steps {
            sh '''
@@ -60,7 +60,7 @@ pipeline {
            '''
          }
       }
-     */
+     
       stage('Helm-qa') {
          steps {
            sh '''
@@ -69,7 +69,9 @@ pipeline {
            '''
          }
       }
+       */
     }
+
     post {
       failure {
         slackSend channel: ' project-team', message: 'job failed'
