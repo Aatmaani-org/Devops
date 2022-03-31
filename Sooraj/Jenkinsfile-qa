@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+
+    stages {
+      stage('Helm-dev') {
+         steps {
+           sh '''
+           cd warnerdevops/Devops/Sooraj/helm
+           helm upgrade --install --set image.tag=dev-latest warnerbro warnerbros -n dev -f values-dev.yaml
+           '''
+         }
+      }
+    }
+    post {
+      failure {
+        slackSend channel: ' project-team', message: 'job failed'
+      }
+      success {
+        slackSend channel: ' project-team', message: 'job Success'
+      }
+    }
+}
