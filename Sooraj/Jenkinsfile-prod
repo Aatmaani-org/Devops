@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+
+    stages {
+      stage('Helm-qa') {
+         steps {
+           sh '''
+           cd warnerdevops/Devops/Sooraj
+           bash -e prod_tag.sh
+           '''
+         }
+      }
+    }
+    post {
+      failure {
+        slackSend channel: ' project-team', message: 'job failed'
+      }
+      success {
+        slackSend channel: ' project-team', message: 'job Success'
+      }
+    }
+}
