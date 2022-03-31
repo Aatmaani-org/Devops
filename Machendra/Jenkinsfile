@@ -42,7 +42,13 @@ pipeline {
         '''
      }
     } 
-     
+    stage ('Pull image to ECR and Creating pod using Helm in PROD') {
+      steps{
+        sh ''' cd jenkins/Devops/Machendra/
+        bash prodbuild.sh
+        '''
+     }
+    }   
 
   }
     post {
