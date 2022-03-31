@@ -14,4 +14,4 @@ cd /var/lib/jenkins/workspace/Sooraj/node-app/warnerdevops/Devops/Sooraj/helm
 
 echo "------Deploying the image having prod-latest tag using its commit-id as a tag in helm------"
 
-helm upgrade --install --set image.tag=$commit_id warnerbro warnerbros -n qa -f values-prod.yaml
+helm upgrade --install --set image.tag=$commit_id warnerbro warnerbros -n prod -f values-prod.yaml
