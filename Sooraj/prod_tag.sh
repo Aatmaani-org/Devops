@@ -1,5 +1,6 @@
 #!/bin/bash
-commit_id=`aws ecr describe-images --repository-name new-nodejs | grep -2 qa-latest | awk 'NR==1{print $1}' | tr -d '"',`
+commit_id=`aws ecr describe-images --repository-name new-nodejs | grep -2 qa-latest | awk 'NR==2{print $1}' | tr -d '"',`
+echo $commit_id
 image="883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs"
 docker pull $image:$commit_id
 docker tag  $image:$commit_id $image:prod-latest
