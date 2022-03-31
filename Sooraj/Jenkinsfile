@@ -29,7 +29,7 @@ pipeline {
         steps {
           sh '''
           cd warnerdevops/Devops/Sooraj
-          bash build_push.sh
+          bash -e build_push.sh
           '''
         }
       }
@@ -47,7 +47,7 @@ pipeline {
         steps {
           sh '''
           cd warnerdevops/Devops/Sooraj
-          bash qa_tag.sh
+          bash -e qa_tag.sh
           '''
         }
       }
@@ -65,7 +65,7 @@ pipeline {
          steps {
            sh '''
            cd warnerdevops/Devops/Sooraj
-           bash prod_tag.sh
+           bash -e prod_tag.sh
            '''
          }
       }

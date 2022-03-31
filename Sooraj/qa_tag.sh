@@ -15,6 +15,6 @@ docker tag  $image:$commit_id $image:qa-latest
 docker push $image:qa-latest
 cd /var/lib/jenkins/workspace/Sooraj/node-app/warnerdevops/Devops/Sooraj/helm
 
-echo "------Using the commit_id tag of the image in helm which qa-deployment having qa-latest tag------"
+echo "------Using the commit_id tag of the image in helm which qa-deployment having qa-latest tag------
 
 helm upgrade --install --set image.tag=$commit_id warnerbro warnerbros -n qa -f values-qa.yaml
