@@ -4,7 +4,7 @@ pipeline {
     stages {
       stage('Cleaning the directory') {
         steps {
-          sh 'rm -rf *'
+          sh 'rm -rf warnerdevops warnerproduction'
         }
       }
       stage('Clone Production') {
@@ -29,7 +29,7 @@ pipeline {
         steps {
           sh '''
           cd warnerdevops/Devops/Sooraj
-          bash -e build_push.sh
+          bash build_push.sh
           '''
         }
       }

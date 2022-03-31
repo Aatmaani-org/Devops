@@ -46,8 +46,8 @@ service:
   readinessProbe:
     tcpSocket:
       port: 3000
-    initialDelaySeconds: 10
-    periodSeconds: 10
+    initialDelaySeconds: 20
+    periodSeconds: 20
 ingress:
   enabled: false
   className: ""
