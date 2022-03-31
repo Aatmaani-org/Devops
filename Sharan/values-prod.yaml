@@ -5,7 +5,7 @@
 replicaCount: 2
 
 image: 
-  repository: 883195043912.dkr.ecr.us-west-2.amazonaws.com/new-nodejs:brocode
+  repository: 883195043912.dkr.ecr.us-west-2.amazonaws.com/node-js
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
