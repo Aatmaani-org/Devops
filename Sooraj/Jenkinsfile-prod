@@ -5,8 +5,6 @@ pipeline {
       stage('Helm-qa') {
          steps {
            sh '''
-           ls
-           pwd
            cd Sooraj
            bash -e prod_tag.sh
            '''
