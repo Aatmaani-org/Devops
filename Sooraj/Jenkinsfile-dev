@@ -33,43 +33,8 @@ pipeline {
           '''
         }
       }
-      /*
-      stage('Helm-dev') {
-         steps {
-           sh '''
-           cd warnerdevops/Devops/Sooraj/helm
-           helm upgrade --install --set image.tag=dev-latest warnerbro warnerbros -n dev -f values-dev.yaml
-           '''
-         }
-      }
-      */
-      stage('Tag and push the image to ECR') {
-        steps {
-          sh '''
-          cd warnerdevops/Devops/Sooraj
-          bash -e qa_tag.sh
-          '''
-        }
-      }
-      /*
-      stage('Helm-qa') {
-         steps {
-           sh '''
-           cd warnerdevops/Devops/Sooraj/helm
-           helm upgrade --install --set image.tag=qa-latest warnerbro warnerbros -n qa -f values-qa.yaml
-           '''
-         }
-      }
-     */
-      stage('Helm-qa') {
-         steps {
-           sh '''
-           cd warnerdevops/Devops/Sooraj
-           bash -e prod_tag.sh
-           '''
-         }
-      }
     }
+
     post {
       failure {
         slackSend channel: ' project-team', message: 'job failed'
