@@ -1,7 +1,8 @@
 #!/bin/bash
 echo "------Building the Image------"
 
-cd /var/lib/jenkins/workspace/Sooraj/node-app/warnerproduction/Production
+cd /var/lib/jenkins/workspace/Sooraj/Node-app-dev/warnerproduction/Production
+
 docker build -t new-nodejs --build-arg GIT_COMMIT=$(git log -1 --format=%h) .
 
 echo "------Tagging the image with commit_id and dev_latest------"
