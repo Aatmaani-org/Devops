@@ -15,7 +15,7 @@ pipeline {
                 git clone https://github.com/Aatmaani-org/Production.git
 		cd /var/lib/jenkins/workspace/sharan/dev/workingenv/Production
 		bash  /var/lib/jenkins/workspace/sharan/dev/Devops/Sharan/build.sh
-          '''
+                '''
               }
 	}
         stage ('helm run') {
@@ -25,7 +25,7 @@ pipeline {
                 ls
                 cd /var/lib/jenkins/workspace/sharan/dev/Devops/Sharan
                 helm upgrade --install --atomic --timeout 20s --set image.tag=$commit_id warnerbro warnerbros -n dev -f values-dev.yaml
-          '''
+                '''
           }
         }
     }
