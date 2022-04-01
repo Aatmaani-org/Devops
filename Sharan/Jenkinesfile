@@ -26,7 +26,7 @@ pipeline {
                 pwd
                 ls
                 cd /var/lib/jenkins/workspace/sharan/dev/Devops/Sharan
-                helm upgrade --install --set image.tag=$git_commit nodejss nodejs -n dev -f values-dev.yaml
+                #helm upgrade --install --set image.tag=$git_commit nodejss nodejs -n dev -f values-dev.yaml
                 '''
           }
         }
