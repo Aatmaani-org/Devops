@@ -10,3 +10,4 @@ echo $latest_id
 echo ---------- helm run ------------
 helm upgrade --install --set image.tag=$latest_id nodejss nodejs -n qa -f values-qa.yaml
 #helm upgrade --install --set image.tag=$git_commit nodejss nodejs -n
+#################
