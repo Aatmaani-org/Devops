@@ -11,8 +11,7 @@ pipeline {
         stage ('mkdir & clone prod') {
 	    steps{
                 sh '''
-                pwd
-                ls
+                mkdir workingenv
                 cd workingenv
                 git clone https://github.com/Aatmaani-org/Production.git
 		cd /var/lib/jenkins/workspace/sharan/dev/workingenv/Production
