@@ -1,4 +1,6 @@
 FROM node:0.10.41
+ARG GIT_COMMIT=unspecified
+LABEL git_commit=$GIT_COMMIT
 COPY ./nodewebsite/express-website /app/
 WORKDIR /app/
 RUN npm install -g express
