@@ -21,7 +21,7 @@ pipeline {
 	    steps{
 	        sh '''pwd
                 cd /var/lib/jenkins/workspace/sharan/dev/Devops/Sharan
-	        helm upgrade --install gost nodejs -n dev -f values-dev.yaml'''
+	        helm upgrade --install --wait --timeout 20  gost nodejs -n dev -f values-dev.yaml'''
 	     }
         }
     }
