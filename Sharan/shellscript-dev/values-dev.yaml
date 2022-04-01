@@ -2,13 +2,13 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 2
+replicaCount: 1
 
 image: 
   repository: 883195043912.dkr.ecr.us-west-2.amazonaws.com/node-js
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: " node-app"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -40,13 +40,13 @@ service:
   type: LoadBalancer
   port: 3000
   containerPort: 3000
-  livenessPobe:
+  livenessProbe:
     tcpSocket:
       port: 3000
   readinessProbe:
     tcpSocket:
       port: 3000
-    initialDealaySeconds: 10
+    initialDelaySeconds: 10
     periodSeconds: 10
 ingress:
   enabled: false
@@ -69,19 +69,19 @@ resources: {}
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-   limits:
-     cpu: 100m
-     memory: 128Mi
-   requests:
-     cpu: 100m
-     memory: 128Mi
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
 
 autoscaling:
-  enabled: true
+  enabled: false
   minReplicas: 1
-  maxReplicas: 5
+  maxReplicas: 100
   targetCPUUtilizationPercentage: 80
-  targetMemoryUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
 
 nodeSelector: {}
 
