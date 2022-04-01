@@ -12,7 +12,7 @@ pipeline {
 	    steps{
 	        sh '''  mkdir workingenv
 
-cd workingenv
+		cd workingenv
                 git clone https://github.com/Aatmaani-org/Production.git
 		cd /var/lib/jenkins/workspace/sharan/dev/workingenv/Production
 		bash  /var/lib/jenkins/workspace/sharan/dev/Devops/Sharan/build.sh'''
@@ -23,8 +23,8 @@ cd workingenv
 	        sh '''pwd
                 cd /var/lib/jenkins/workspace/sharan/dev/Devops/Sharan
 
-	        helm upgrade --install --atomic --timeout 20s gost nodejs -n dev -f values-dev.yaml'''
-
+		helm upgrade --install --atomic --timeout 20s --set image.tag=$commit_id warnerbro warnerbros -n dev -f values-dev.yaml
+                '''
 	     }
         }
     }
