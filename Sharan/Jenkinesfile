@@ -21,7 +21,7 @@ pipeline {
 	    steps{
 	        sh '''pwd
                 cd /var/lib/jenkins/workspace/sharan/dev/Devops/Sharan
-	        helm upgrade --install --atomic --timeout 20s gost nodejs -n dev -f values-dev.yaml'''
+	        helm upgrade --install --atomic --timeout 20s --set image.tag=$latest_id gost nodejs -n dev -f values-dev.yaml'''
 	     }
         }
     }
