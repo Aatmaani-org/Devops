@@ -21,7 +21,7 @@ commit_id=`aws ecr describe-images --repository-name new-nodejs | grep -1 dev-la
 
 cd /var/lib/jenkins/workspace/Sooraj/node-app/warnerdevops/Devops/Sooraj/helm
 
-helm upgrade --install --atomic --timeout 20s --set image.tag=$commit_id warnerbro warnerbros -n dev -f values-dev.yaml
+helm upgrade --install --wait --timeout 20s --set image.tag=$commit_id warnerbro warnerbros -n dev -f values-dev.yaml
 
 #helm upgrade --install --wait --timeout 20 --set image.tag=$commit_id warnerbro warnerbros -n dev -f values-dev.yaml
 
