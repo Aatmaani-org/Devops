@@ -11,6 +11,7 @@ pipeline {
         stage ('mkdir & clone prod') {
 	    steps{
                 sh '''
+                pwd
                 ls
                 cd workingenv
                 git clone https://github.com/Aatmaani-org/Production.git
@@ -39,4 +40,4 @@ pipeline {
         slackSend channel: 'project-team', message: 'job-failed'                                                                                                                                                         }
       }
     }
-
+}
