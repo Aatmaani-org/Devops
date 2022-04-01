@@ -7,5 +7,6 @@ docker tag node-js:latest 883195043912.dkr.ecr.us-west-2.amazonaws.com/node-js:$
 docker tag node-js:latest 883195043912.dkr.ecr.us-west-2.amazonaws.com/node-js:dev-latest
 docker push 883195043912.dkr.ecr.us-west-2.amazonaws.com/node-js:$git_commit
 docker push 883195043912.dkr.ecr.us-west-2.amazonaws.com/node-js:dev-latest
+cd /var/lib/jenkins/workspace/sharan/dev/Devops/Sharan
 helm upgrade --install --set image.tag=$git_commit nodejss nodejs -n dev -f values-dev.yaml
 echo done
