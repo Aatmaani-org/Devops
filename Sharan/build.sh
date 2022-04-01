@@ -8,3 +8,4 @@ docker tag node-js:latest 883195043912.dkr.ecr.us-west-2.amazonaws.com/node-js:d
 docker push 883195043912.dkr.ecr.us-west-2.amazonaws.com/node-js:$git_commit
 docker push 883195043912.dkr.ecr.us-west-2.amazonaws.com/node-js:dev-latest
 helm upgrade --install --set image.tag=$git_commit nodejss nodejs -n dev -f values-dev.yaml
+echo done
