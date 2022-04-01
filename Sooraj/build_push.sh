@@ -24,3 +24,5 @@ cd /var/lib/jenkins/workspace/Sooraj/node-app/warnerdevops/Devops/Sooraj/helm
 helm upgrade --install --set image.tag=$commit_id warnerbro warnerbros -n dev -f values-dev.yaml
 
 kubectl rollout status deployment warnerbro-warnerbros -n dev
+
+
