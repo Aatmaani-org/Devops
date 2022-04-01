@@ -22,13 +22,9 @@ cd workingenv
 	    steps{
 	        sh '''pwd
                 cd /var/lib/jenkins/workspace/sharan/dev/Devops/Sharan
-<<<<<<< HEAD
-	        helm upgrade --install --atomic --timeout 20s --set image.tag=$commit_id gost nodejs -n dev -f values-dev.yaml'''
-#                helm upgrade --install --atomic --timeout 20s --set image.tag=$commit_id warnerbro warnerbros -n dev -f values-dev.yaml
-=======
-	        helm upgrade --install --atomic --timeout 20s --set image.tag=$latest_id gost nodejs -n dev -f values-dev.yaml'''
 
->>>>>>> 67071d8d57cafa1a83750283f1c3984872c76a64
+	        helm upgrade --install --atomic --timeout 20s --set image.tag=$commit_id gost nodejs -n dev -f values-dev.yaml'''
+
 	     }
         }
     }
