@@ -11,6 +11,7 @@ pipeline {
          }
       }
     }
+    /*
     post {
       failure {
         slackSend channel: ' project-team', message: 'job failed'
@@ -19,4 +20,5 @@ pipeline {
         slackSend channel: ' project-team', message: 'job Success'
       }
     }
+    */
 }
