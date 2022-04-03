@@ -8,6 +8,6 @@ docker push 883195043912.dkr.ecr.us-west-2.amazonaws.com/node-js:prod-latest
 latest_id=`aws ecr describe-images --repository-name node-js | grep -2 qa-latest |awk 'NR==4{print $1}'| tr -d '"',`
 echo $latest_id
 echo ---------- helm run ------------
-cd /var/lib/jenkins/workspace/sharan/prod-depl/Sharan
+cd  /var/lib/jenkins/workspace/sharan/prod-depl/Devops/Sharan
 helm upgrade --install  --atmoic --timeout 20s --set image.tag=$latest_id gost nodejs -n prod -f values-prod.yaml
 
