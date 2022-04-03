@@ -10,5 +10,5 @@ echo $latest_id
 echo ---------- helm run ------------
 cd  /var/lib/jenkins/workspace/sharan/prod-depl/Devops/Sharan
 #helm upgrade --install --atmoic --timeout 20s --set image.tag=$latest_id nodejss nodejs -n prod -f values-prod.yaml
-helm upgrade --install --atomic --timeout 20s --set image.tag=$latest_id nodejss nodejs  -n prod -f values-prod.yaml
+helm upgrade --install --atomic --timeout 40s --set image.tag=$latest_id nodejss nodejs  -n prod -f values-prod.yaml
 #helm upgrade --install --atomic --timeout 20s --set image.tag=$latest_id nodejs
