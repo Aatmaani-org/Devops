@@ -9,5 +9,6 @@ latest_id=`aws ecr describe-images --repository-name node-js | grep -2 qa-latest
 echo $latest_id
 echo ---------- helm run ------------
 cd  /var/lib/jenkins/workspace/sharan/prod-depl/Devops/Sharan
-helm upgrade --install  --atmoic --timeout 20s --set image.tag=$latest_id gost nodejs -n prod -f values-prod.yaml
+helm upgrade --install --atmoic --timeout 20s --set image.tag=$latest_id nodejs nodejss -n prod -f values-prod.yaml
 
+#helm upgrade --install --atomic --timeout 20s --set image.tag=$latest_id nodejs
