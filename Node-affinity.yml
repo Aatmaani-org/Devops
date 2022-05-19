@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 15
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/os
+                operator: In
+                values:
+                - linux
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 70
+            preference:
+              matchExpressions:
+              - key: instance
+                operator: In
+                values:
+                - spot
+          - weight: 30
+            preference:
+              matchExpressions:
+              - key: instance
+                operator: In
+                values:
+                - on-demand
